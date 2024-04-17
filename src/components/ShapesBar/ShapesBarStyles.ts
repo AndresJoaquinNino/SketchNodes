@@ -10,7 +10,15 @@ export const ShapesBox = styled.aside({
   borderWidth: '3px',
   borderStyle: 'solid',
   borderColor: '#3A3A3A',
-  padding: '1rem',
+  padding: '.5rem',
   boxShadow: '3px 3px 5px #0000004d',
   zIndex: 5
+})
+
+export const ShapesContainer = styled.div({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: '.5rem',
 })

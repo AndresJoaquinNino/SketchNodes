@@ -1,9 +1,16 @@
-import { ShapesBox } from './ShapesBarStyles'
+import { ShapesBox, ShapesContainer } from './ShapesBarStyles'
+import { shapesOptions } from './ShapesBarConfig'
 
 export default function ShapesBar() {
   return (
     <ShapesBox>
-      ShapesBar
+      <ShapesContainer>
+        {
+          shapesOptions.map((shapeElement, index) => (
+            <img key={index} src={shapeElement.svgDirectory} />
+          ))
+        }
+      </ShapesContainer>
     </ShapesBox>
   )
 }
