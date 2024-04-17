@@ -6,6 +6,7 @@ import ReactFlow, {
   Node,
   Edge
 } from 'reactflow'
+import { ShapesBar } from './components'
 
 const initialNodes: Node[] = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
@@ -29,6 +30,7 @@ function App() {
       >
         <Background />
         <Controls />
+        <ShapesBar/>
       </ReactFlow>
     </div>
   )
