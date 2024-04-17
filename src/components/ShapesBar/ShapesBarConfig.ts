@@ -1,10 +1,10 @@
-import Process from '@src/assets/shapes/Process.svg'
 import Decision from '@src/assets/shapes/Decision.svg'
-import Terminal from '@src/assets/shapes/Terminal.svg'
+import Off_page_Connector from '@src/assets/shapes/Off_page_Connector.svg'
+import On_page_Connector from '@src/assets/shapes/On_page_Connector.svg'
 import Output from '@src/assets/shapes/Output.svg'
 import Predefined_Process from '@src/assets/shapes/Predefined_Process.svg'
-import On_page_Connector from '@src/assets/shapes/On_page_Connector.svg'
-import Off_page_Connector from '@src/assets/shapes/Off_page_Connector.svg'
+import Process from '@src/assets/shapes/Process.svg'
+import Terminal from '@src/assets/shapes/Terminal.svg'
 
 export const shapesOptions = [
   {

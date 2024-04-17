@@ -6,6 +6,7 @@ import ReactFlow, {
   Node,
   Edge
 } from 'reactflow'
+
 import { ShapesBar } from './components'
 
 const initialNodes: Node[] = [

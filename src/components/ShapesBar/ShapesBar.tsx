@@ -1,5 +1,5 @@
-import { ShapesBox, ShapesContainer } from './ShapesBarStyles'
 import { shapesOptions } from './ShapesBarConfig'
+import { ShapesBox, ShapesContainer } from './ShapesBarStyles'
 
 export default function ShapesBar() {
   return (
