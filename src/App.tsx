@@ -8,6 +8,7 @@ import ReactFlow, {
 } from 'reactflow'
 
 import { ShapesBar } from './components'
+import GlobalStyles from './GlobalStyles'
 
 const initialNodes: Node[] = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
+      <GlobalStyles />
       <ReactFlow
         nodes={initialNodes}
         edges={initialEdges}
@@ -31,7 +33,7 @@ function App() {
       >
         <Background />
         <Controls />
-        <ShapesBar/>
+        <ShapesBar />
       </ReactFlow>
     </div>
   )
