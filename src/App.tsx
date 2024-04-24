@@ -1,4 +1,5 @@
 import 'reactflow/dist/style.css'
+import { NodeShapesBar } from '@src/features/Nodes'
 import ReactFlow, {
   Controls,
   Background,
@@ -7,7 +8,6 @@ import ReactFlow, {
   Edge
 } from 'reactflow'
 
-import { ShapesBar } from './components'
 import GlobalStyles from './GlobalStyles'
 
 const initialNodes: Node[] = [
@@ -33,7 +33,7 @@ function App() {
       >
         <Background />
         <Controls />
-        <ShapesBar />
+        <NodeShapesBar />
       </ReactFlow>
     </div>
   )

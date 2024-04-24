@@ -6,7 +6,7 @@ import Predefined_Process from '@src/assets/shapes/Predefined_Process.svg'
 import Process from '@src/assets/shapes/Process.svg'
 import Terminal from '@src/assets/shapes/Terminal.svg'
 
-export const shapesOptions = [
+export const nodeShapesOptions = [
   {
     name: 'Process',
     svgDirectory: Process
