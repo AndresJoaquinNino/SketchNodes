@@ -21,19 +21,15 @@ export const nodesSlice = createSlice({
         ...action.payload
       })
     },
-    // moveNode: (state, action) => {
-    //   state.nodes = action.payload
-    // },
-    // connectNodes: (state, action) => {
-    //   state.edges = action.payload
-    // }
+    moveNode: (state, action) => {
+      state.nodes = action.payload
+    },
   },
 })
 
 export const {
   addNode,
-  // moveNode,
-  // connectNodes
+  moveNode,
 } = nodesSlice.actions
 
 export default nodesSlice.reducer
