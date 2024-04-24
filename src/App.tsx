@@ -1,4 +1,5 @@
 import 'reactflow/dist/style.css'
+import { addEdge } from '@src/features/Edges/edgesSlice'
 import { NodeShapesBar } from '@src/features/Nodes/components'
 import { moveNode } from '@src/features/Nodes/nodesSlice'
 import { useAppSelector, useAppDispatch } from '@src/hooks'
@@ -8,18 +9,18 @@ import ReactFlow, {
   Background,
   ProOptions,
   applyNodeChanges,
-  Edge,
+  addEdge as addEdgeReactFlow,
+  Connection,
   NodeChange,
 } from 'reactflow'
 
 import GlobalStyles from './GlobalStyles'
 
-const initialEdges: Edge[] = [{ id: 'e1-2', source: '1', target: '2' }]
-
 const proOptions: ProOptions = { hideAttribution: true }
 
 function App() {
   const nodesState = useAppSelector((state) => state.nodes)
+  const edgesState = useAppSelector((state) => state.edges)
 
   const dispatch = useAppDispatch()
 
@@ -32,15 +33,24 @@ function App() {
 
   },[dispatch, nodesState.nodes])
 
+  const handleNodeConnection = useCallback((connection: Connection) => {
+    dispatch(
+      addEdge(
+        addEdgeReactFlow(connection, edgesState.edges)
+      )
+    )
+  }, [dispatch, edgesState.edges])
+
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <GlobalStyles />
       <ReactFlow
         nodes={nodesState.nodes}
-        edges={initialEdges}
+        edges={edgesState.edges}
         proOptions={proOptions}
         onNodesChange={handleNodeMovement}
+        onConnect={handleNodeConnection}
         nodesDraggable
         fitView
         onlyRenderVisibleElements
