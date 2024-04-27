@@ -9,7 +9,7 @@ export default function NodeShapesBar() {
 
   const handleClick = () => {
     const newNode = {
-      data: { label: 'new node' },
+      data: { label: 'new node' }, type: 'Terminal',
     }
     dispatch(addNode(newNode))
   }

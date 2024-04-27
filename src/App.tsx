@@ -1,9 +1,11 @@
 import 'reactflow/dist/style.css'
 import { addEdge } from '@src/features/Edges/edgesSlice'
 import { NodeShapesBar } from '@src/features/Nodes/components'
+import { nodeTypes } from '@src/features/Nodes/nodesConfig'
 import { moveNode } from '@src/features/Nodes/nodesSlice'
 import { useAppSelector, useAppDispatch } from '@src/hooks'
 import { useCallback } from 'react'
+import { useMemo } from 'react'
 import ReactFlow, {
   Controls,
   Background,
@@ -22,16 +24,18 @@ function App() {
   const nodesState = useAppSelector((state) => state.nodes)
   const edgesState = useAppSelector((state) => state.edges)
 
+  const memoNodeTypes = useMemo(() => nodeTypes, [])
+
   const dispatch = useAppDispatch()
 
-  const handleNodeMovement =  useCallback((changes: NodeChange[]) => {
+  const handleNodeMovement = useCallback((changes: NodeChange[]) => {
     dispatch(
       moveNode(
         applyNodeChanges(changes, nodesState.nodes)
       )
     )
 
-  },[dispatch, nodesState.nodes])
+  }, [dispatch, nodesState.nodes])
 
   const handleNodeConnection = useCallback((connection: Connection) => {
     dispatch(
@@ -51,6 +55,7 @@ function App() {
         proOptions={proOptions}
         onNodesChange={handleNodeMovement}
         onConnect={handleNodeConnection}
+        nodeTypes={memoNodeTypes}
         nodesDraggable
         fitView
         onlyRenderVisibleElements
