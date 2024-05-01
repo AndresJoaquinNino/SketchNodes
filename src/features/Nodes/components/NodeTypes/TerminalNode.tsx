@@ -72,20 +72,22 @@ const TerminalNode: ComponentType<NodeProps> = (props) => {
           props.selected
           &&
           <rect
-            x="13%"
-            y="10%"
-            width={'74%'}
-            height={'80%'}
+            x="4%"
+            y="8%"
+            width={'92%'} // 100 - (2 x X)
+            height={'84%'}
+            rx="9"
             stroke="#7DC4E4"
             strokeWidth="0.3"
+            strokeLinejoin="round"
             strokeDasharray="1"
           />
         }
         <foreignObject
-          x="13%"
-          y="10%"
-          width={'74%'}
-          height={'80%'}
+          x="4%"
+          y="8%"
+          width={'92%'} // 100 - (2 x X)
+          height={'84%'}
         >
           <div
             style={{
