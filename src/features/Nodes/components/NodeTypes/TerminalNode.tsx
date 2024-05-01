@@ -5,14 +5,12 @@ import type { NodeProps } from 'reactflow'
 
 const MIN_WIDTH = 120
 const MIN_HEIGHT = 60
-const DEFAULT_WIDTH = 300
-const DEFAULT_HEIGHT = 150
 
 const TerminalNode: ComponentType<NodeProps> = (props) => {
   const [text, setText] = useState<string>('Hello')
   const [nodeSize, setNodeSize] = useState({
-    width: DEFAULT_WIDTH,
-    height: DEFAULT_HEIGHT
+    width: 120,
+    height: 60
 
   })
 
@@ -30,8 +28,8 @@ const TerminalNode: ComponentType<NodeProps> = (props) => {
   return (
     <div
       style={{
-        width: '100%',
-        height: '100%',
+        width: nodeSize.width,
+        height: nodeSize.height,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
