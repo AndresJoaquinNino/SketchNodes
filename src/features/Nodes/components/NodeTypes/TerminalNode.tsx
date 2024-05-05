@@ -6,11 +6,16 @@ import type { NodeProps } from 'reactflow'
 const MIN_WIDTH = 120
 const MIN_HEIGHT = 60
 
+const internalBoxWidth = 80
+const internalBoxHeight = 60
+const internalBoxPositionX = (100 - internalBoxWidth) / 2
+const internalBoxPositionY = (100 - internalBoxHeight) / 2
+
 const TerminalNode: ComponentType<NodeProps> = (props) => {
   const [text, setText] = useState<string>('Hello')
   const [nodeSize, setNodeSize] = useState({
-    width: 120,
-    height: 60
+    width: MIN_WIDTH,
+    height: MIN_HEIGHT
 
   })
 
@@ -41,7 +46,7 @@ const TerminalNode: ComponentType<NodeProps> = (props) => {
         style={{
           width: '.5rem',
           height: '.5rem',
-          top: '-1px'
+          top: '-5%'
         }}
       />
       <NodeResizer
@@ -72,11 +77,10 @@ const TerminalNode: ComponentType<NodeProps> = (props) => {
           props.selected
           &&
           <rect
-            x="4%"
-            y="8%"
-            width={'92%'} // 100 - (2 x X)
-            height={'84%'}
-            rx="9"
+            x={`${internalBoxPositionX}%`}
+            y={`${internalBoxPositionY}%`}
+            width={`${internalBoxWidth}%`}
+            height={`${internalBoxHeight}%`}
             stroke="#7DC4E4"
             strokeWidth="0.3"
             strokeLinejoin="round"
@@ -84,10 +88,10 @@ const TerminalNode: ComponentType<NodeProps> = (props) => {
           />
         }
         <foreignObject
-          x="4%"
-          y="8%"
-          width={'92%'} // 100 - (2 x X)
-          height={'84%'}
+          x={`${internalBoxPositionX}%`}
+          y={`${internalBoxPositionY}%`}
+          width={`${internalBoxWidth}%`}
+          height={`${internalBoxHeight}%`}
         >
           <div
             style={{
