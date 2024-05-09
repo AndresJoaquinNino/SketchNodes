@@ -41,6 +41,7 @@ const TerminalNode: ComponentType<NodeProps> = (props) => {
       }}
     >
       <Handle
+        id="top"
         type="target"
         position={Position.Top}
         style={{
@@ -49,12 +50,88 @@ const TerminalNode: ComponentType<NodeProps> = (props) => {
           top: '-5%'
         }}
       />
+      <Handle
+        id="top"
+        type="source"
+        position={Position.Top}
+        style={{
+          width: '.5rem',
+          height: '.5rem',
+          top: '-5%'
+        }}
+      />
+      <Handle
+        id="right"
+        type="target"
+        position={Position.Right}
+        style={{
+          width: '.5rem',
+          height: '.5rem',
+          right: '-2.5%'
+        }}
+      />
+      <Handle
+        id="right"
+        type="source"
+        position={Position.Right}
+        style={{
+          width: '.5rem',
+          height: '.5rem',
+          right: '-2.5%'
+        }}
+      />
+      <Handle
+        id="bottom"
+        type="target"
+        position={Position.Bottom}
+        style={{
+          width: '.5rem',
+          height: '.5rem',
+          bottom: '-5%'
+        }}
+      />
+      <Handle
+        id="bottom"
+        type="source"
+        position={Position.Bottom}
+        style={{
+          width: '.5rem',
+          height: '.5rem',
+          bottom: '-5%'
+        }}
+      />
+      <Handle
+        id="left"
+        type="target"
+        position={Position.Left}
+        style={{
+          width: '.5rem',
+          height: '.5rem',
+          left: '-2.5%'
+        }}
+      />
+      <Handle
+        id="left"
+        type="source"
+        position={Position.Left}
+        style={{
+          width: '.5rem',
+          height: '.5rem',
+          left: '-2.5%'
+        }}
+      />
       <NodeResizer
         isVisible={props.selected}
         keepAspectRatio={false}
         minWidth={MIN_WIDTH}
         minHeight={MIN_HEIGHT}
         onResize={handleResize}
+        lineStyle={{
+          borderColor: '#7DC4E4'
+        }}
+        handleStyle={{
+          backgroundColor: '#7DC4E4'
+        }}
       />
       <svg
         width={'100%'}
