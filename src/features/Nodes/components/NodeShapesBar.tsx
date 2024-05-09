@@ -7,19 +7,26 @@ import { ShapesBox, ShapesContainer } from '../nodesStyles'
 export default function NodeShapesBar() {
   const dispatch = useAppDispatch()
 
-  const handleClick = () => {
+  const addNewNode = (nodeType: string) => {
     const newNode = {
-      data: { label: 'new node' }, type: 'Terminal',
+      data: { label: 'new node' }, type: nodeType,
     }
     dispatch(addNode(newNode))
   }
 
   return (
     <ShapesBox>
-      <ShapesContainer onClick={handleClick}>
+      <ShapesContainer>
         {
           nodeShapesOptions.map((nodeShape, index) => (
-            <img key={index} src={nodeShape.svgDirectory} />
+            <img
+              key={index}
+              src={nodeShape.svgDirectory}
+              onClick={() => addNewNode(nodeShape.nodeType)}
+              style={{
+                cursor: 'pointer',
+              }}
+            />
           ))
         }
       </ShapesContainer>

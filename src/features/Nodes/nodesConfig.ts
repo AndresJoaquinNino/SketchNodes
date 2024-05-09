@@ -11,31 +11,38 @@ import { NodeTypes } from 'reactflow'
 export const nodeShapesOptions = [
   {
     name: 'Process',
-    svgDirectory: Process
+    svgDirectory: Process,
+    nodeType: 'Terminal',
   },
   {
     name: 'Terminal',
-    svgDirectory: Terminal
+    svgDirectory: Terminal,
+    nodeType: 'Terminal',
   },
   {
     name: 'Decision',
-    svgDirectory: Decision
+    svgDirectory: Decision,
+    nodeType: 'Terminal',
   },
   {
     name: 'Output',
-    svgDirectory: Output
+    svgDirectory: Output,
+    nodeType: 'Terminal',
   },
   {
     name: 'Predefined Process',
-    svgDirectory: Predefined_Process
+    svgDirectory: Predefined_Process,
+    nodeType: 'Terminal',
   },
   {
     name: 'On Page Connector',
-    svgDirectory: On_page_Connector
+    svgDirectory: On_page_Connector,
+    nodeType: 'Terminal',
   },
   {
     name: 'Off Page Connector',
-    svgDirectory: Off_page_Connector
+    svgDirectory: Off_page_Connector,
+    nodeType: 'Terminal',
   },
 ]
 
