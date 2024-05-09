@@ -5,14 +5,14 @@ import Output from '@src/assets/shapes/Output.svg'
 import Predefined_Process from '@src/assets/shapes/Predefined_Process.svg'
 import Process from '@src/assets/shapes/Process.svg'
 import Terminal from '@src/assets/shapes/Terminal.svg'
-import { TerminalNode } from '@src/features/Nodes/components/NodeTypes'
+import { ProcessNode, TerminalNode } from '@src/features/Nodes/components/NodeTypes'
 import { NodeTypes } from 'reactflow'
 
 export const nodeShapesOptions = [
   {
     name: 'Process',
     svgDirectory: Process,
-    nodeType: 'Terminal',
+    nodeType: 'Process',
   },
   {
     name: 'Terminal',
@@ -47,5 +47,6 @@ export const nodeShapesOptions = [
 ]
 
 export const nodeTypes: NodeTypes = {
-  Terminal: TerminalNode
+  Terminal: TerminalNode,
+  Process: ProcessNode,
 }
