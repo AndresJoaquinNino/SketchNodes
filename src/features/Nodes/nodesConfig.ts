@@ -9,7 +9,8 @@ import {
   DecisionNode,
   ProcessNode,
   TerminalNode,
-  OutputNode
+  OutputNode,
+  PredefineProcessNode,
 } from '@src/features/Nodes/components/NodeTypes'
 import { NodeTypes } from 'reactflow'
 
@@ -37,7 +38,7 @@ export const nodeShapesOptions = [
   {
     name: 'Predefined Process',
     svgDirectory: Predefined_Process,
-    nodeType: 'Terminal',
+    nodeType: 'PredefineProcess',
   },
   {
     name: 'On Page Connector',
@@ -56,4 +57,5 @@ export const nodeTypes: NodeTypes = {
   Process: ProcessNode,
   Decision: DecisionNode,
   Output: OutputNode,
+  PredefineProcess: PredefineProcessNode,
 }
