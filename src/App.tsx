@@ -14,6 +14,7 @@ import ReactFlow, {
   addEdge as addEdgeReactFlow,
   Connection,
   NodeChange,
+  MarkerType,
 } from 'reactflow'
 
 import GlobalStyles from './GlobalStyles'
@@ -38,9 +39,20 @@ function App() {
   }, [dispatch, nodesState.nodes])
 
   const handleNodeConnection = useCallback((connection: Connection) => {
+    const newEdge = {
+      ...connection,
+      type: 'smoothstep',
+      style: {
+        'stroke': '#3A3A3A'
+      },
+      markerEnd: {
+        type: MarkerType.ArrowClosed,
+        color: '#3A3A3A'
+      },
+    }
     dispatch(
       addEdge(
-        addEdgeReactFlow(connection, edgesState.edges)
+        addEdgeReactFlow(newEdge, edgesState.edges)
       )
     )
   }, [dispatch, edgesState.edges])
