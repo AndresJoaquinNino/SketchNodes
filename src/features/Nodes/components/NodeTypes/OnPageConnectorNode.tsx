@@ -141,7 +141,7 @@ const OnPageConnectorNode: ComponentType<NodeProps> = (props) => {
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid meet"
       >
-        <circle cx="10" cy="10" r="8.5" stroke="#3A3A3A" strokeWidth="0.5" />
+        <circle cx="10" cy="10" r="8.5" stroke="#3A3A3A" strokeWidth="0.75" />
         {
           props.selected
           &&
