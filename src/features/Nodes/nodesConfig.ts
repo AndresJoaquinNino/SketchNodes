@@ -12,6 +12,7 @@ import {
   OutputNode,
   PredefineProcessNode,
   OnPageConnectorNode,
+  OffPageConnectorNode,
 } from '@src/features/Nodes/components/NodeTypes'
 import { NodeTypes } from 'reactflow'
 
@@ -49,7 +50,7 @@ export const nodeShapesOptions = [
   {
     name: 'Off Page Connector',
     svgDirectory: Off_page_Connector,
-    nodeType: 'Terminal',
+    nodeType: 'OffPageConnector',
   },
 ]
 
@@ -60,4 +61,5 @@ export const nodeTypes: NodeTypes = {
   Output: OutputNode,
   PredefineProcess: PredefineProcessNode,
   OnPageConnector: OnPageConnectorNode,
+  OffPageConnector: OffPageConnectorNode,
 }
