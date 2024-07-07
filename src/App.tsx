@@ -1,4 +1,5 @@
 import 'reactflow/dist/style.css'
+import { DownloadButton } from '@src/features/Download'
 import { addEdge, removeEdge } from '@src/features/Edges/edgesSlice'
 import { NodeShapesBar } from '@src/features/Nodes/components'
 import { nodeTypes } from '@src/features/Nodes/nodesConfig'
@@ -99,6 +100,7 @@ function App() {
         <Background />
         <Controls />
         <NodeShapesBar />
+        <DownloadButton/>
       </ReactFlow>
     </div>
   )
