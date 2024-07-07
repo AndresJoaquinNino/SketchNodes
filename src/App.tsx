@@ -1,12 +1,16 @@
 import 'reactflow/dist/style.css'
-import { addEdge } from '@src/features/Edges/edgesSlice'
+import { addEdge, removeEdge } from '@src/features/Edges/edgesSlice'
 import { NodeShapesBar } from '@src/features/Nodes/components'
 import { nodeTypes } from '@src/features/Nodes/nodesConfig'
 import { moveNode } from '@src/features/Nodes/nodesSlice'
 import { useAppSelector, useAppDispatch } from '@src/hooks'
+import React, {useEffect} from 'react'
 import { useCallback } from 'react'
 import { useMemo } from 'react'
+import { useKeyPress } from 'reactflow'
 import ReactFlow, {
+  Edge,
+  isEdge,
   Controls,
   Background,
   ProOptions,
@@ -17,17 +21,31 @@ import ReactFlow, {
   MarkerType,
 } from 'reactflow'
 
+import { focusFlowElement } from './appSlice'
 import GlobalStyles from './GlobalStyles'
 
 const proOptions: ProOptions = { hideAttribution: true }
 
 function App() {
+  const { focusedFlowElement } = useAppSelector((state) => state.app)
   const nodesState = useAppSelector((state) => state.nodes)
   const edgesState = useAppSelector((state) => state.edges)
 
   const memoNodeTypes = useMemo(() => nodeTypes, [])
 
+  const deletePressed = useKeyPress('Delete')
+
   const dispatch = useAppDispatch()
+
+
+  useEffect(() => {
+    if (deletePressed) {
+      if (focusedFlowElement !== null && isEdge(focusedFlowElement)) {
+        dispatch(removeEdge(focusedFlowElement))
+      }
+    }
+  }, [deletePressed, dispatch, focusedFlowElement])
+
 
   const handleNodeMovement = useCallback((changes: NodeChange[]) => {
     dispatch(
@@ -57,6 +75,11 @@ function App() {
     )
   }, [dispatch, edgesState.edges])
 
+  const handleEdgeClick = (_event: React.MouseEvent, edge: Edge) => {
+    dispatch(
+      focusFlowElement(edge)
+    )
+  }
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
@@ -67,6 +90,7 @@ function App() {
         proOptions={proOptions}
         onNodesChange={handleNodeMovement}
         onConnect={handleNodeConnection}
+        onEdgeClick={handleEdgeClick}
         nodeTypes={memoNodeTypes}
         nodesDraggable
         fitView

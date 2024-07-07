@@ -15,12 +15,18 @@ export const edgesSlice = createSlice({
   reducers: {
     addEdge: (state, action) => {
       state.edges = action.payload
-    }
-  },
+    },
+    removeEdge: (state, action) => {
+      const edgeToRemove: Edge = action.payload
+      const reducedEdges = state.edges.filter((edge) => edge.id !== edgeToRemove.id)
+      state.edges = reducedEdges
+    },
+  }
 })
 
 export const {
-  addEdge
+  addEdge,
+  removeEdge,
 } = edgesSlice.actions
 
 export default edgesSlice.reducer
