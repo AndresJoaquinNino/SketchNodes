@@ -1,5 +1,5 @@
-import { addNode } from '@src/features/Nodes/nodesSlice'
-import { useAppDispatch } from '@src/hooks'
+import { useAppDispatch } from '@src/store/hooks'
+import { addNode } from '@src/store/slices/nodesSlice'
 
 import { nodeShapesOptions } from '../nodesConfig'
 import { ShapesBox, ShapesContainer } from '../nodesStyles'

@@ -1,3 +1,3 @@
 export * from './components'
 export * from './nodesStyles'
-export * from './nodesSlice'
+export * from '../../store/slices/nodesSlice'

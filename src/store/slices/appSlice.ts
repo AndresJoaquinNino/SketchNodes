@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { Edge, Node } from 'reactflow'
 
-import { removeEdge } from './features/Edges/edgesSlice'
+import { removeEdge } from './edgesSlice'
 
 
 interface appState {
