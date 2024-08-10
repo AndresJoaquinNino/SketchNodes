@@ -1,7 +1,9 @@
 import type { ComponentType } from 'react'
 import React, { useState } from 'react'
-import { Handle, Position, NodeResizer, ResizeDragEvent, ResizeParams } from 'reactflow'
+import { NodeResizer, ResizeDragEvent, ResizeParams } from 'reactflow'
 import type { NodeProps } from 'reactflow'
+
+import { NodeWrapper } from '..'
 
 const MIN_WIDTH = 120
 const MIN_HEIGHT = 60
@@ -31,95 +33,30 @@ const TerminalNode: ComponentType<NodeProps> = (props) => {
   }
 
   return (
-    <div
-      style={{
-        width: nodeSize.width,
-        height: nodeSize.height,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
+    <NodeWrapper
+      width={nodeSize.width}
+      height={nodeSize.height}
+      handleTopStyles={{
+        width: '.5rem',
+        height: '.5rem',
+        top: '-5%',
+      }}
+      handleRightStyles={{
+        width: '.5rem',
+        height: '.5rem',
+        right: '-2.5%',
+      }}
+      handleBottomStyles={{
+        width: '.5rem',
+        height: '.5rem',
+        bottom: '-5%'
+      }}
+      handleLeftStyles={{
+        width: '.5rem',
+        height: '.5rem',
+        left: '-2.5%'
       }}
     >
-      <Handle
-        id="top"
-        type="target"
-        position={Position.Top}
-        style={{
-          width: '.5rem',
-          height: '.5rem',
-          top: '-5%'
-        }}
-      />
-      <Handle
-        id="top"
-        type="source"
-        position={Position.Top}
-        style={{
-          width: '.5rem',
-          height: '.5rem',
-          top: '-5%'
-        }}
-      />
-      <Handle
-        id="right"
-        type="target"
-        position={Position.Right}
-        style={{
-          width: '.5rem',
-          height: '.5rem',
-          right: '-2.5%'
-        }}
-      />
-      <Handle
-        id="right"
-        type="source"
-        position={Position.Right}
-        style={{
-          width: '.5rem',
-          height: '.5rem',
-          right: '-2.5%'
-        }}
-      />
-      <Handle
-        id="bottom"
-        type="target"
-        position={Position.Bottom}
-        style={{
-          width: '.5rem',
-          height: '.5rem',
-          bottom: '-5%'
-        }}
-      />
-      <Handle
-        id="bottom"
-        type="source"
-        position={Position.Bottom}
-        style={{
-          width: '.5rem',
-          height: '.5rem',
-          bottom: '-5%'
-        }}
-      />
-      <Handle
-        id="left"
-        type="target"
-        position={Position.Left}
-        style={{
-          width: '.5rem',
-          height: '.5rem',
-          left: '-2.5%'
-        }}
-      />
-      <Handle
-        id="left"
-        type="source"
-        position={Position.Left}
-        style={{
-          width: '.5rem',
-          height: '.5rem',
-          left: '-2.5%'
-        }}
-      />
       <NodeResizer
         isVisible={props.selected}
         keepAspectRatio={false}
@@ -198,7 +135,7 @@ const TerminalNode: ComponentType<NodeProps> = (props) => {
           </div>
         </foreignObject>
       </svg>
-    </div>
+    </NodeWrapper>
   )
 }
 

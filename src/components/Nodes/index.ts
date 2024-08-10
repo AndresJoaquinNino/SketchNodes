@@ -1,2 +1,2 @@
 export * from './NodeTypes'
-export * from '../../store/slices/nodesSlice'
+export { default as NodeWrapper } from './NodeWrapper'
