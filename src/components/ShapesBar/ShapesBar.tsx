@@ -1,4 +1,4 @@
-import { nodeShapesOptions } from '@src/components/Nodes/nodesConfig'
+import { nodeShapesOptions } from '@src/components/ShapesBar/shapeBarConfig'
 import { useAppDispatch } from '@src/store/hooks'
 import { addNode } from '@src/store/slices/nodesSlice'
 import styled from 'styled-components'
