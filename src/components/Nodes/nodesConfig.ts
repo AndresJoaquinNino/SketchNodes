@@ -13,7 +13,7 @@ import {
   PredefineProcessNode,
   OnPageConnectorNode,
   OffPageConnectorNode,
-} from '@src/features/Nodes/components/NodeTypes'
+} from '@src/components/Nodes/NodeTypes'
 import { NodeTypes } from 'reactflow'
 
 export const nodeShapesOptions = [
