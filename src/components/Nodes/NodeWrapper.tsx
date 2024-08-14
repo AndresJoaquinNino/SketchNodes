@@ -1,3 +1,4 @@
+import { Flex } from '@src/styles/mixins'
 import React from 'react'
 import { Handle, Position, } from 'reactflow'
 
@@ -13,14 +14,11 @@ interface NodeWrapperProps {
 
 const NodeWrapper: React.FC<NodeWrapperProps> = (props) => {
   return (
-    <div
-      style={{
-        width: props.width,
-        height: props.height,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
+    <Flex
+      $width={props.width}
+      $height={props.height}
+      $justifyContent='center'
+      $alignItems='center'
     >
       <Handle
         id="top"
@@ -71,7 +69,7 @@ const NodeWrapper: React.FC<NodeWrapperProps> = (props) => {
         style={props.handleLeftStyles}
       />
       {props.children}
-    </div>
+    </Flex>
   )
 }
 

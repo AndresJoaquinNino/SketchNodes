@@ -1,9 +1,12 @@
+import { Flex } from '@src/styles/mixins'
 import type { ComponentType } from 'react'
 import React, { useState } from 'react'
 import { NodeResizer, ResizeDragEvent, ResizeParams } from 'reactflow'
 import type { NodeProps } from 'reactflow'
+import { useTheme } from 'styled-components'
 
-import { NodeWrapper } from '..'
+import { NodeInput } from '../Nodes.styled'
+import NodeWrapper from '../NodeWrapper'
 
 const MIN_WIDTH = 35
 const MIN_HEIGHT = 35
@@ -14,6 +17,9 @@ const internalBoxPositionX = (100 - internalBoxWidth) / 2
 const internalBoxPositionY = (100 - internalBoxHeight) / 4
 
 const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
+
+  const styledTheme = useTheme()
+
   const [text, setText] = useState<string>('OffPageConnectorNode')
   const [nodeSize, setNodeSize] = useState({
     width: MIN_WIDTH,
@@ -64,22 +70,22 @@ const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
         minHeight={MIN_HEIGHT}
         onResize={handleResize}
         lineStyle={{
-          borderColor: '#7DC4E4'
+          borderColor: styledTheme.colors.primary
         }}
         handleStyle={{
-          backgroundColor: '#7DC4E4'
+          backgroundColor: styledTheme.colors.primary
         }}
       />
       <svg
         width="100%"
         height="100%"
         viewBox="0 0 28 30"
-        fill="#FFFFFF"
+        fill={styledTheme.colors.background}
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M1.5 2H26.5V14.5L14 27L1.5 14.5V2Z"
-          stroke="#3A3A3A"
+          stroke={styledTheme.colors.border}
           strokeWidth="1"
         />
         {
@@ -90,7 +96,7 @@ const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
             y={`${internalBoxPositionY}%`}
             width={`${internalBoxWidth}%`}
             height={`${internalBoxHeight}%`}
-            stroke="#7DC4E4"
+            stroke={styledTheme.colors.primary}
             strokeWidth="0.3"
             strokeLinejoin="round"
             strokeDasharray="1"
@@ -102,125 +108,23 @@ const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
           width={`${internalBoxWidth}%`}
           height={`${internalBoxHeight}%`}
         >
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
+          <Flex
+            $width='100%'
+            $height='100%'
+            $justifyContent='center'
+            $alignItems='center'
           >
-            <input
+            <NodeInput
               type="text"
               value={text}
               onChange={handleTextChange}
-              style={{
-                width: '100%',
-                height: '100%',
-                outline: 'none',
-                border: 'none',
-                background: 'none',
-                textAlign: 'center',
-                fontSize: '5px',
-                color: '#3A3A3A',
-                pointerEvents: props.selected ? 'auto' : 'none',
-              }}
+              $selected={props.selected}
+              $fontSize={styledTheme.shapeFontSize.medium}
             />
-          </div>
+          </Flex>
         </foreignObject>
       </svg>
     </NodeWrapper>
-    // <div
-    //   style={{
-    //     width: nodeSize.width,
-    //     height: nodeSize.height,
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    //     alignItems: 'center'
-    //   }}
-    // >
-    //   <Handle
-    //     id="top"
-    //     type="target"
-    //     position={Position.Top}
-    //     style={{
-    //       width: '.5rem',
-    //       height: '.5rem',
-    //       top: '-5%'
-    //     }}
-    //   />
-    //   <Handle
-    //     id="top"
-    //     type="source"
-    //     position={Position.Top}
-    //     style={{
-    //       width: '.5rem',
-    //       height: '.5rem',
-    //       top: '-5%'
-    //     }}
-    //   />
-    //   <Handle
-    //     id="right"
-    //     type="target"
-    //     position={Position.Right}
-    //     style={{
-    //       width: '.5rem',
-    //       height: '.5rem',
-    //       right: '-2.5%'
-    //     }}
-    //   />
-    //   <Handle
-    //     id="right"
-    //     type="source"
-    //     position={Position.Right}
-    //     style={{
-    //       width: '.5rem',
-    //       height: '.5rem',
-    //       right: '-2.5%'
-    //     }}
-    //   />
-    //   <Handle
-    //     id="bottom"
-    //     type="target"
-    //     position={Position.Bottom}
-    //     style={{
-    //       width: '.5rem',
-    //       height: '.5rem',
-    //       bottom: '-5%'
-    //     }}
-    //   />
-    //   <Handle
-    //     id="bottom"
-    //     type="source"
-    //     position={Position.Bottom}
-    //     style={{
-    //       width: '.5rem',
-    //       height: '.5rem',
-    //       bottom: '-5%'
-    //     }}
-    //   />
-    //   <Handle
-    //     id="left"
-    //     type="target"
-    //     position={Position.Left}
-    //     style={{
-    //       width: '.5rem',
-    //       height: '.5rem',
-    //       left: '-2.5%'
-    //     }}
-    //   />
-    //   <Handle
-    //     id="left"
-    //     type="source"
-    //     position={Position.Left}
-    //     style={{
-    //       width: '.5rem',
-    //       height: '.5rem',
-    //       left: '-2.5%'
-    //     }}
-    //   />
-    // </div>
   )
 }
 

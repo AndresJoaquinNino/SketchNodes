@@ -1,7 +1,6 @@
+import { ButtonBox, Floating } from '@src/styles/mixins'
 import { toPng } from 'html-to-image'
 import React from 'react'
-import styled from 'styled-components'
-
 
 function downloadImage(dataUrl: string) {
   const a = document.createElement('a')
@@ -13,22 +12,6 @@ function downloadImage(dataUrl: string) {
 
 const IMAGE_WIDTH = 1024
 const IMAGE_HEIGHT = 768
-
-export const ShapesBox = styled.button({
-  position: 'fixed',
-  right: '1%',
-  bottom: '1%',
-  transform: 'translateY(-50%)',
-  background: 'white',
-  borderRadius: '5px',
-  borderWidth: '3px',
-  borderStyle: 'solid',
-  borderColor: '#3A3A3A',
-  padding: '.5rem',
-  boxShadow: '3px 3px 5px #0000004d',
-  zIndex: 5,
-  fontFamily: 'sans-serif'
-})
 
 const DownloadButton: React.FC = () => {
 
@@ -43,9 +26,15 @@ const DownloadButton: React.FC = () => {
     }).then(downloadImage)
   }
   return (
-    <ShapesBox onClick={handleOnClick}>
-      <span>Export</span>
-    </ShapesBox>
+    <Floating
+      $right='1%'
+      $bottom='1%'
+      $transform='translateY(-50%)'
+    >
+      <ButtonBox onClick={handleOnClick}>
+        <span>Export</span>
+      </ButtonBox>
+    </Floating>
   )
 }
 

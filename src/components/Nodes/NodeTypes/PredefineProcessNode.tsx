@@ -1,9 +1,13 @@
+import { Flex } from '@src/styles/mixins'
 import type { ComponentType } from 'react'
 import React, { useState } from 'react'
 import { NodeResizer, ResizeDragEvent, ResizeParams } from 'reactflow'
 import type { NodeProps } from 'reactflow'
+import { useTheme } from 'styled-components'
 
-import { NodeWrapper } from '..'
+import { NodeInput } from '../Nodes.styled'
+import NodeWrapper from '../NodeWrapper'
+
 
 const MIN_WIDTH = 120
 const MIN_HEIGHT = 60
@@ -17,6 +21,9 @@ const leftBoxWidth = 100 - spaceBetweenBoxes
 const rightBoxWidth = 100 - leftBoxWidth
 
 const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
+
+  const styledTheme = useTheme()
+
   const [text, setText] = useState<string>('PredefineProcessNode')
   const [nodeSize, setNodeSize] = useState({
     width: MIN_WIDTH,
@@ -67,16 +74,16 @@ const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
         minHeight={MIN_HEIGHT}
         onResize={handleResize}
         lineStyle={{
-          borderColor: '#7DC4E4'
+          borderColor: styledTheme.colors.primary
         }}
         handleStyle={{
-          backgroundColor: '#7DC4E4'
+          backgroundColor: styledTheme.colors.primary
         }}
       />
       <svg
         width="100%"
         height="100%"
-        fill="#ffffff"
+        fill={styledTheme.colors.background}
         viewBox={`0 0 ${nodeSize.width / 3} ${nodeSize.height / 3}`}
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid meet"
@@ -86,7 +93,7 @@ const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
           y="0.5"
           width="98%"
           height="96%"
-          stroke="#3A3A3A"
+          stroke={styledTheme.colors.border}
           strokeWidth="0.5"
           strokeLinejoin="round"
         />
@@ -95,7 +102,7 @@ const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
           y1="2%"
           x2={`${leftBoxWidth + 0.5}%`}
           y2="98%"
-          stroke="#3A3A3A"
+          stroke={styledTheme.colors.border}
           strokeWidth="0.5"
         />
         <line
@@ -103,7 +110,7 @@ const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
           y1="2%"
           x2={`${rightBoxWidth}%`}
           y2="98%"
-          stroke="#3A3A3A"
+          stroke={styledTheme.colors.border}
           strokeWidth="0.5"
         />
         {
@@ -114,7 +121,7 @@ const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
             y={`${internalBoxPositionY}%`}
             width={`${internalBoxWidth}%`}
             height={`${internalBoxHeight}%`}
-            stroke="#7DC4E4"
+            stroke={styledTheme.colors.primary}
             strokeWidth="0.3"
             strokeLinejoin="round"
             strokeDasharray="1"
@@ -126,35 +133,20 @@ const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
           width={`${internalBoxWidth}%`}
           height={`${internalBoxHeight}%`}
         >
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
+          <Flex
+            $width='100%'
+            $height='100%'
+            $justifyContent='center'
+            $alignItems='center'
           >
-            <input
+            <NodeInput
               type="text"
               value={text}
               onChange={handleTextChange}
-              style={{
-                width: '100%',
-                height: '100%',
-                outline: 'none',
-                border: 'none',
-                background: 'none',
-                textAlign: 'center',
-                fontSize: '5px',
-                color: '#3A3A3A',
-                pointerEvents: props.selected ? 'auto' : 'none',
-                overflow: 'hidden',
-                whiteSpace: 'nowrap',
-                textOverflow: 'ellipsis',
-              }}
+              $selected={props.selected}
+              $fontSize={styledTheme.shapeFontSize.medium}
             />
-          </div>
+          </Flex>
         </foreignObject>
       </svg>
     </NodeWrapper>
