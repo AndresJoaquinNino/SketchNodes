@@ -5,16 +5,6 @@ import Output from '@src/assets/shapes/Output.svg'
 import Predefined_Process from '@src/assets/shapes/Predefined_Process.svg'
 import Process from '@src/assets/shapes/Process.svg'
 import Terminal from '@src/assets/shapes/Terminal.svg'
-import {
-  DecisionNode,
-  ProcessNode,
-  TerminalNode,
-  OutputNode,
-  PredefineProcessNode,
-  OnPageConnectorNode,
-  OffPageConnectorNode,
-} from '@src/features/Nodes/components/NodeTypes'
-import { NodeTypes } from 'reactflow'
 
 export const nodeShapesOptions = [
   {
@@ -53,13 +43,3 @@ export const nodeShapesOptions = [
     nodeType: 'OffPageConnector',
   },
 ]
-
-export const nodeTypes: NodeTypes = {
-  Terminal: TerminalNode,
-  Process: ProcessNode,
-  Decision: DecisionNode,
-  Output: OutputNode,
-  PredefineProcess: PredefineProcessNode,
-  OnPageConnector: OnPageConnectorNode,
-  OffPageConnector: OffPageConnectorNode,
-}

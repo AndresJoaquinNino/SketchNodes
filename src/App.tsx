@@ -1,10 +1,11 @@
 import 'reactflow/dist/style.css'
-import { DownloadButton } from '@src/features/Download'
-import { addEdge, removeEdge } from '@src/features/Edges/edgesSlice'
-import { NodeShapesBar } from '@src/features/Nodes/components'
-import { nodeTypes } from '@src/features/Nodes/nodesConfig'
-import { moveNode } from '@src/features/Nodes/nodesSlice'
-import { useAppSelector, useAppDispatch } from '@src/hooks'
+import DownloadButton from '@src/components/DownloadButton'
+import { nodeTypes } from '@src/components/Nodes/nodesConfig'
+import ShapesBar from '@src/components/ShapesBar'
+import { useAppSelector, useAppDispatch } from '@src/store/hooks'
+import { addEdge, removeEdge } from '@src/store/slices/edgesSlice'
+import { moveNode } from '@src/store/slices/nodesSlice'
+import GlobalStyles from '@src/styles/GlobalStyles'
 import React, {useEffect} from 'react'
 import { useCallback } from 'react'
 import { useMemo } from 'react'
@@ -22,8 +23,7 @@ import ReactFlow, {
   MarkerType,
 } from 'reactflow'
 
-import { focusFlowElement } from './appSlice'
-import GlobalStyles from './GlobalStyles'
+import { focusFlowElement } from './store/slices/appSlice'
 
 const proOptions: ProOptions = { hideAttribution: true }
 
@@ -99,7 +99,7 @@ function App() {
       >
         <Background />
         <Controls />
-        <NodeShapesBar />
+        <ShapesBar />
         <DownloadButton/>
       </ReactFlow>
     </div>
