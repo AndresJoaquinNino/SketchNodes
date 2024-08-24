@@ -5,23 +5,22 @@ import { NodeResizer, ResizeDragEvent, ResizeParams } from 'reactflow'
 import type { NodeProps } from 'reactflow'
 import { useTheme } from 'styled-components'
 
-import { NodeInput } from '../Nodes.styled'
-import NodeWrapper from '../NodeWrapper'
+import { NodeInput } from '../nodesStyled'
+import NodeWrapper from '../nodeWrapper'
 
-const MIN_WIDTH = 140
-const MIN_HEIGHT = 70
-const RHOMBUS_PADDING = 5
+const MIN_WIDTH = 120
+const MIN_HEIGHT = 60
 
-const internalBoxWidth = 60
-const internalBoxHeight = 30
+const internalBoxWidth = 70
+const internalBoxHeight = 60
 const internalBoxPositionX = (100 - internalBoxWidth) / 2
 const internalBoxPositionY = (100 - internalBoxHeight) / 2
 
-const DecisionNode: ComponentType<NodeProps> = (props) => {
+const OutputNode: ComponentType<NodeProps> = (props) => {
 
   const styledTheme = useTheme()
 
-  const [text, setText] = useState<string>('Decision')
+  const [text, setText] = useState<string>('Output')
   const [nodeSize, setNodeSize] = useState({
     width: MIN_WIDTH,
     height: MIN_HEIGHT
@@ -77,19 +76,18 @@ const DecisionNode: ComponentType<NodeProps> = (props) => {
           backgroundColor: styledTheme.colors.primary
         }}
       />
-      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <polygon
-          points={`
-            ${RHOMBUS_PADDING},
-            ${nodeSize.height / 2} ${nodeSize.width / 2},
-            ${RHOMBUS_PADDING} ${nodeSize.width - RHOMBUS_PADDING},
-            ${nodeSize.height / 2} ${nodeSize.width / 2},
-            ${nodeSize.height - RHOMBUS_PADDING}
-          `}
-          fill={styledTheme.colors.background}
+      <svg
+        width="100%"
+        height="100%"
+        viewBox="0 0 54 24"
+        fill={styledTheme.colors.background}
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <path
+          d="M8 0H52L47 24H2 2Z"
           stroke={styledTheme.colors.border}
-          strokeWidth="1.5"
-          strokeLinejoin="round"
+          strokeWidth=".75"
         />
         {
           props.selected
@@ -100,13 +98,11 @@ const DecisionNode: ComponentType<NodeProps> = (props) => {
             width={`${internalBoxWidth}%`}
             height={`${internalBoxHeight}%`}
             stroke={styledTheme.colors.primary}
-            fill='transparent'
-            strokeWidth="1"
+            strokeWidth="0.3"
             strokeLinejoin="round"
-            strokeDasharray="3"
+            strokeDasharray="1"
           />
         }
-
         <foreignObject
           x={`${internalBoxPositionX}%`}
           y={`${internalBoxPositionY}%`}
@@ -124,7 +120,7 @@ const DecisionNode: ComponentType<NodeProps> = (props) => {
               value={text}
               onChange={handleTextChange}
               $selected={props.selected}
-              $fontSize={styledTheme.shapeFontSize.xLarge}
+              $fontSize={styledTheme.shapeFontSize.medium}
             />
           </Flex>
         </foreignObject>
@@ -133,4 +129,4 @@ const DecisionNode: ComponentType<NodeProps> = (props) => {
   )
 }
 
-export default DecisionNode
+export default OutputNode

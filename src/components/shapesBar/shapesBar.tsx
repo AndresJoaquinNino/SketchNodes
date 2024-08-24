@@ -1,9 +1,9 @@
-import { nodeShapesOptions } from '@src/components/ShapesBar/shapeBarConfig'
+import { nodeShapesOptions } from '@src/components/shapesBar/shapeBarConfig'
 import { useAppDispatch } from '@src/store/hooks'
 import { addNode } from '@src/store/slices/nodesSlice'
 import { Flex, Box, Floating } from '@src/styles/mixins'
 
-export default function NodeShapesBar() {
+export default function ShapesBar() {
   const dispatch = useAppDispatch()
 
   const addNewNode = (nodeType: string) => {

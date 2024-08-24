@@ -5,22 +5,22 @@ import { NodeResizer, ResizeDragEvent, ResizeParams } from 'reactflow'
 import type { NodeProps } from 'reactflow'
 import { useTheme } from 'styled-components'
 
-import { NodeInput } from '../Nodes.styled'
-import NodeWrapper from '../NodeWrapper'
+import { NodeInput } from '../nodesStyled'
+import NodeWrapper from '../nodeWrapper'
 
 const MIN_WIDTH = 35
 const MIN_HEIGHT = 35
 
-const internalBoxWidth = 40
+const internalBoxWidth = 55
 const internalBoxHeight = 40
 const internalBoxPositionX = (100 - internalBoxWidth) / 2
-const internalBoxPositionY = (100 - internalBoxHeight) / 2
+const internalBoxPositionY = (100 - internalBoxHeight) / 4
 
-const OnPageConnectorNode: ComponentType<NodeProps> = (props) => {
+const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
 
   const styledTheme = useTheme()
 
-  const [text, setText] = useState<string>('OnPageConnectorNode')
+  const [text, setText] = useState<string>('OffPageConnectorNode')
   const [nodeSize, setNodeSize] = useState({
     width: MIN_WIDTH,
     height: MIN_HEIGHT
@@ -77,14 +77,17 @@ const OnPageConnectorNode: ComponentType<NodeProps> = (props) => {
         }}
       />
       <svg
-        width={'100%'}
-        height={'100%'}
-        viewBox="0 0 20 20"
+        width="100%"
+        height="100%"
+        viewBox="0 0 28 30"
         fill={styledTheme.colors.background}
         xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid meet"
       >
-        <circle cx="10" cy="10" r="8.5" stroke={styledTheme.colors.border} strokeWidth="0.75" />
+        <path
+          d="M1.5 2H26.5V14.5L14 27L1.5 14.5V2Z"
+          stroke={styledTheme.colors.border}
+          strokeWidth="1"
+        />
         {
           props.selected
           &&
@@ -125,4 +128,4 @@ const OnPageConnectorNode: ComponentType<NodeProps> = (props) => {
   )
 }
 
-export default OnPageConnectorNode
+export default OffPageConnectorNode

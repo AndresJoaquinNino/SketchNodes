@@ -6,7 +6,7 @@ import {
   PredefineProcessNode,
   OnPageConnectorNode,
   OffPageConnectorNode,
-} from '@src/components/Nodes/NodeTypes'
+} from '@src/components/nodes/nodeTypes'
 import { NodeTypes } from 'reactflow'
 
 export const nodeTypes: NodeTypes = {
