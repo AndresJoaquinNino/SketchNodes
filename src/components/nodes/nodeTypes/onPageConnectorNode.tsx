@@ -45,22 +45,22 @@ const OnPageConnectorNode: ComponentType<NodeProps> = (props) => {
       handleTopStyles={{
         width: '.5rem',
         height: '.5rem',
-        top: '-5%',
+        top: '-5px',
       }}
       handleRightStyles={{
         width: '.5rem',
         height: '.5rem',
-        right: '-2.5%',
+        right: '-5px',
       }}
       handleBottomStyles={{
         width: '.5rem',
         height: '.5rem',
-        bottom: '-5%'
+        bottom: '-5px'
       }}
       handleLeftStyles={{
         width: '.5rem',
         height: '.5rem',
-        left: '-2.5%'
+        left: '-5px'
       }}
     >
       <NodeResizer
@@ -79,12 +79,20 @@ const OnPageConnectorNode: ComponentType<NodeProps> = (props) => {
       <svg
         width={'100%'}
         height={'100%'}
-        viewBox="0 0 20 20"
+        viewBox={`0 0 ${nodeSize.width / 3} ${nodeSize.height / 3}`}
         fill={styledTheme.colors.background}
         xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid meet"
       >
-        <circle cx="10" cy="10" r="8.5" stroke={styledTheme.colors.border} strokeWidth="0.75" />
+        <rect
+          x="1%"
+          y="2%"
+          width={'98%'}
+          height={'96%'}
+          rx="100"
+          stroke={styledTheme.colors.border}
+          strokeWidth="0.5"
+          strokeLinejoin="round"
+        />
         {
           props.selected
           &&
