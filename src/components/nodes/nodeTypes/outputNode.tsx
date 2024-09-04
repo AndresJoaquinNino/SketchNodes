@@ -79,13 +79,16 @@ const OutputNode: ComponentType<NodeProps> = (props) => {
       <svg
         width="100%"
         height="100%"
-        viewBox="0 0 54 24"
         fill={styledTheme.colors.background}
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid meet"
       >
         <path
-          d="M8 0H52L47 24H2 2Z"
+          d={`
+            M10
+            2H${nodeSize.width - 1}
+            L${nodeSize.width / 1.065}
+            ${nodeSize.height - 2}H2
+            2Z
+          `}
           stroke={styledTheme.colors.border}
           strokeWidth=".75"
         />
