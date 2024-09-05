@@ -11,8 +11,8 @@ import NodeWrapper from '../nodeWrapper'
 const MIN_WIDTH = 35
 const MIN_HEIGHT = 35
 
-const internalBoxWidth = 40
-const internalBoxHeight = 40
+const internalBoxWidth = 65
+const internalBoxHeight = 65
 const internalBoxPositionX = (100 - internalBoxWidth) / 2
 const internalBoxPositionY = (100 - internalBoxHeight) / 2
 
