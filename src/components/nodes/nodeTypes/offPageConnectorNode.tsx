@@ -11,8 +11,8 @@ import NodeWrapper from '../nodeWrapper'
 const MIN_WIDTH = 35
 const MIN_HEIGHT = 35
 
-const internalBoxWidth = 55
-const internalBoxHeight = 40
+const internalBoxWidth = 80
+const internalBoxHeight = 45
 const internalBoxPositionX = (100 - internalBoxWidth) / 2
 const internalBoxPositionY = (100 - internalBoxHeight) / 4
 
@@ -79,14 +79,19 @@ const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
       <svg
         width="100%"
         height="100%"
-        viewBox="0 0 28 30"
+        // viewBox="0 0 28 30"
         fill={styledTheme.colors.background}
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M1.5 2H26.5V14.5L14 27L1.5 14.5V2Z"
+          d={`
+            M1.5
+            2H${nodeSize.width / 1.01}V${nodeSize.height / 1.85}L${nodeSize.width / 2}
+            ${nodeSize.height - 5}L1
+            ${nodeSize.height / 1.85}V2Z
+          `}
           stroke={styledTheme.colors.border}
-          strokeWidth="1"
+          strokeWidth="1.5"
         />
         {
           props.selected
@@ -97,9 +102,9 @@ const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
             width={`${internalBoxWidth}%`}
             height={`${internalBoxHeight}%`}
             stroke={styledTheme.colors.primary}
-            strokeWidth="0.3"
+            strokeWidth="1.2"
             strokeLinejoin="round"
-            strokeDasharray="1"
+            strokeDasharray="3"
           />
         }
         <foreignObject
@@ -119,7 +124,7 @@ const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
               value={text}
               onChange={handleTextChange}
               $selected={props.selected}
-              $fontSize={styledTheme.shapeFontSize.medium}
+              $fontSize={styledTheme.shapeFontSize.xLarge}
             />
           </Flex>
         </foreignObject>
