@@ -90,7 +90,7 @@ const OutputNode: ComponentType<NodeProps> = (props) => {
             2Z
           `}
           stroke={styledTheme.colors.border}
-          strokeWidth=".75"
+          strokeWidth="1.5"
         />
         {
           props.selected
@@ -101,9 +101,9 @@ const OutputNode: ComponentType<NodeProps> = (props) => {
             width={`${internalBoxWidth}%`}
             height={`${internalBoxHeight}%`}
             stroke={styledTheme.colors.primary}
-            strokeWidth="0.3"
+            strokeWidth="1.2"
             strokeLinejoin="round"
-            strokeDasharray="1"
+            strokeDasharray="3"
           />
         }
         <foreignObject
@@ -123,7 +123,7 @@ const OutputNode: ComponentType<NodeProps> = (props) => {
               value={text}
               onChange={handleTextChange}
               $selected={props.selected}
-              $fontSize={styledTheme.shapeFontSize.medium}
+              $fontSize={styledTheme.shapeFontSize.xLarge}
             />
           </Flex>
         </foreignObject>
