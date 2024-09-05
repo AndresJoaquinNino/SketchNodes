@@ -86,13 +86,12 @@ const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
         fill={styledTheme.colors.background}
         viewBox={`0 0 ${nodeSize.width / 3} ${nodeSize.height / 3}`}
         xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid meet"
       >
         <rect
-          x="0.5"
-          y="0.5"
-          width="98%"
-          height="96%"
+          x="1%"
+          y="2%"
+          width={'98%'}
+          height={'96%'}
           stroke={styledTheme.colors.border}
           strokeWidth="0.5"
           strokeLinejoin="round"
