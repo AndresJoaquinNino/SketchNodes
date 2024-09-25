@@ -5,26 +5,23 @@ import { NodeResizer, ResizeDragEvent, ResizeParams } from 'reactflow'
 import type { NodeProps } from 'reactflow'
 import { useTheme } from 'styled-components'
 
-import { NodeInput } from '../Nodes.styled'
-import NodeWrapper from '../NodeWrapper'
+import { NodeInput } from '../nodesStyled'
+import NodeWrapper from '../nodeWrapper'
 
+const MIN_WIDTH = 140
+const MIN_HEIGHT = 70
+const RHOMBUS_PADDING = 5
 
-const MIN_WIDTH = 120
-const MIN_HEIGHT = 60
-
-const internalBoxWidth = 70
-const internalBoxHeight = 60
+const internalBoxWidth = 60
+const internalBoxHeight = 30
 const internalBoxPositionX = (100 - internalBoxWidth) / 2
 const internalBoxPositionY = (100 - internalBoxHeight) / 2
-const spaceBetweenBoxes = 86
-const leftBoxWidth = 100 - spaceBetweenBoxes
-const rightBoxWidth = 100 - leftBoxWidth
 
-const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
+const DecisionNode: ComponentType<NodeProps> = (props) => {
 
   const styledTheme = useTheme()
 
-  const [text, setText] = useState<string>('PredefineProcessNode')
+  const [text, setText] = useState<string>('Decision')
   const [nodeSize, setNodeSize] = useState({
     width: MIN_WIDTH,
     height: MIN_HEIGHT
@@ -80,38 +77,19 @@ const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
           backgroundColor: styledTheme.colors.primary
         }}
       />
-      <svg
-        width="100%"
-        height="100%"
-        fill={styledTheme.colors.background}
-        viewBox={`0 0 ${nodeSize.width / 3} ${nodeSize.height / 3}`}
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <rect
-          x="0.5"
-          y="0.5"
-          width="98%"
-          height="96%"
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <polygon
+          points={`
+            ${RHOMBUS_PADDING},
+            ${nodeSize.height / 2} ${nodeSize.width / 2},
+            ${RHOMBUS_PADDING} ${nodeSize.width - RHOMBUS_PADDING},
+            ${nodeSize.height / 2} ${nodeSize.width / 2},
+            ${nodeSize.height - RHOMBUS_PADDING}
+          `}
+          fill={styledTheme.colors.background}
           stroke={styledTheme.colors.border}
-          strokeWidth="0.5"
+          strokeWidth="1.5"
           strokeLinejoin="round"
-        />
-        <line
-          x1={`${leftBoxWidth + 0.5}%`}
-          y1="2%"
-          x2={`${leftBoxWidth + 0.5}%`}
-          y2="98%"
-          stroke={styledTheme.colors.border}
-          strokeWidth="0.5"
-        />
-        <line
-          x1={`${rightBoxWidth}%`}
-          y1="2%"
-          x2={`${rightBoxWidth}%`}
-          y2="98%"
-          stroke={styledTheme.colors.border}
-          strokeWidth="0.5"
         />
         {
           props.selected
@@ -122,11 +100,13 @@ const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
             width={`${internalBoxWidth}%`}
             height={`${internalBoxHeight}%`}
             stroke={styledTheme.colors.primary}
-            strokeWidth="0.3"
+            fill='transparent'
+            strokeWidth="1"
             strokeLinejoin="round"
-            strokeDasharray="1"
+            strokeDasharray="3"
           />
         }
+
         <foreignObject
           x={`${internalBoxPositionX}%`}
           y={`${internalBoxPositionY}%`}
@@ -144,7 +124,7 @@ const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
               value={text}
               onChange={handleTextChange}
               $selected={props.selected}
-              $fontSize={styledTheme.shapeFontSize.medium}
+              $fontSize={styledTheme.shapeFontSize.xLarge}
             />
           </Flex>
         </foreignObject>
@@ -153,4 +133,4 @@ const PredefineProcessNode: ComponentType<NodeProps> = (props) => {
   )
 }
 
-export default PredefineProcessNode
+export default DecisionNode

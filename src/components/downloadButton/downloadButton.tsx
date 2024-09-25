@@ -8,19 +8,29 @@ const IMAGE_HEIGHT = 768
 const DownloadButton: React.FC = () => {
 
   const handleOnClick = async () => {
-    const element: HTMLElement | null = document.querySelector('.react-flow__viewport')
-    if (element === null) return
+    const flowElement: HTMLElement | null = document.querySelector('.react-flow__renderer')
+    const backgroundElement: HTMLElement | null = document.querySelector('.react-flow__background')
 
-    const dataUrl: string = await toPng(element, {
-      backgroundColor: '#fff',
+    if (flowElement === null || backgroundElement === null) return
+
+    const backgroundUrl: string = await toPng(backgroundElement)
+
+    flowElement.style.backgroundImage = `url(${backgroundUrl})`
+    flowElement.style.backgroundSize = "cover"
+    flowElement.style.backgroundRepeat = "no-repeat"
+
+    const flowUrl: string = await toPng(flowElement, {
+      backgroundColor: "#ffffff",
       width: IMAGE_WIDTH,
       height: IMAGE_HEIGHT,
     })
 
+    flowElement.style.backgroundImage = ""
+
     const a = document.createElement('a')
 
     a.setAttribute('download', 'ExportedSketch.png')
-    a.setAttribute('href', dataUrl)
+    a.setAttribute('href', flowUrl)
     a.click()
 
   }

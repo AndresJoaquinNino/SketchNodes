@@ -5,22 +5,22 @@ import { NodeResizer, ResizeDragEvent, ResizeParams } from 'reactflow'
 import type { NodeProps } from 'reactflow'
 import { useTheme } from 'styled-components'
 
-import { NodeInput } from '../Nodes.styled'
-import NodeWrapper from '../NodeWrapper'
+import { NodeInput } from '../nodesStyled'
+import NodeWrapper from '../nodeWrapper'
 
-const MIN_WIDTH = 120
-const MIN_HEIGHT = 60
+const MIN_WIDTH = 35
+const MIN_HEIGHT = 35
 
-const internalBoxWidth = 78
-const internalBoxHeight = 60
+const internalBoxWidth = 80
+const internalBoxHeight = 45
 const internalBoxPositionX = (100 - internalBoxWidth) / 2
-const internalBoxPositionY = (100 - internalBoxHeight) / 2
+const internalBoxPositionY = (100 - internalBoxHeight) / 4
 
-const ProcessNode: ComponentType<NodeProps> = (props) => {
+const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
 
   const styledTheme = useTheme()
 
-  const [text, setText] = useState<string>('Process')
+  const [text, setText] = useState<string>('OffPageConnectorNode')
   const [nodeSize, setNodeSize] = useState({
     width: MIN_WIDTH,
     height: MIN_HEIGHT
@@ -77,21 +77,21 @@ const ProcessNode: ComponentType<NodeProps> = (props) => {
         }}
       />
       <svg
-        width={'100%'}
-        height={'100%'}
-        viewBox={`0 0 ${nodeSize.width / 3} ${nodeSize.height / 3}`}
+        width="100%"
+        height="100%"
+        // viewBox="0 0 28 30"
         fill={styledTheme.colors.background}
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          x="1%"
-          y="2%"
-          width={'98%'} // 98%
-          height={'96%'} // 96%
-          // rx="11"
+        <path
+          d={`
+            M1.5
+            2H${nodeSize.width / 1.01}V${nodeSize.height / 1.85}L${nodeSize.width / 2}
+            ${nodeSize.height - 5}L1
+            ${nodeSize.height / 1.85}V2Z
+          `}
           stroke={styledTheme.colors.border}
-          strokeWidth="0.5"
-          strokeLinejoin="round"
+          strokeWidth="1.5"
         />
         {
           props.selected
@@ -102,9 +102,9 @@ const ProcessNode: ComponentType<NodeProps> = (props) => {
             width={`${internalBoxWidth}%`}
             height={`${internalBoxHeight}%`}
             stroke={styledTheme.colors.primary}
-            strokeWidth="0.3"
+            strokeWidth="1.2"
             strokeLinejoin="round"
-            strokeDasharray="1"
+            strokeDasharray="3"
           />
         }
         <foreignObject
@@ -124,7 +124,7 @@ const ProcessNode: ComponentType<NodeProps> = (props) => {
               value={text}
               onChange={handleTextChange}
               $selected={props.selected}
-              $fontSize={styledTheme.shapeFontSize.medium}
+              $fontSize={styledTheme.shapeFontSize.xLarge}
             />
           </Flex>
         </foreignObject>
@@ -133,4 +133,4 @@ const ProcessNode: ComponentType<NodeProps> = (props) => {
   )
 }
 
-export default ProcessNode
+export default OffPageConnectorNode

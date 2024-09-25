@@ -1,4 +1,4 @@
-export { default as Box } from './Box'
-export { default as Flex } from './Flex'
-export { default as Floating } from './Floating'
-export * from './Buttons'
+export { default as Box } from './box'
+export { default as Flex } from './flex'
+export { default as Floating } from './floating'
+export * from './buttons'

@@ -5,22 +5,22 @@ import { NodeResizer, ResizeDragEvent, ResizeParams } from 'reactflow'
 import type { NodeProps } from 'reactflow'
 import { useTheme } from 'styled-components'
 
-import { NodeInput } from '../Nodes.styled'
-import NodeWrapper from '../NodeWrapper'
+import { NodeInput } from '../nodesStyled'
+import NodeWrapper from '../nodeWrapper'
 
-const MIN_WIDTH = 35
-const MIN_HEIGHT = 35
+const MIN_WIDTH = 120
+const MIN_HEIGHT = 60
 
-const internalBoxWidth = 40
-const internalBoxHeight = 40
+const internalBoxWidth = 78
+const internalBoxHeight = 60
 const internalBoxPositionX = (100 - internalBoxWidth) / 2
 const internalBoxPositionY = (100 - internalBoxHeight) / 2
 
-const OnPageConnectorNode: ComponentType<NodeProps> = (props) => {
+const ProcessNode: ComponentType<NodeProps> = (props) => {
 
   const styledTheme = useTheme()
 
-  const [text, setText] = useState<string>('OnPageConnectorNode')
+  const [text, setText] = useState<string>('Process')
   const [nodeSize, setNodeSize] = useState({
     width: MIN_WIDTH,
     height: MIN_HEIGHT
@@ -79,12 +79,20 @@ const OnPageConnectorNode: ComponentType<NodeProps> = (props) => {
       <svg
         width={'100%'}
         height={'100%'}
-        viewBox="0 0 20 20"
+        viewBox={`0 0 ${nodeSize.width / 3} ${nodeSize.height / 3}`}
         fill={styledTheme.colors.background}
         xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid meet"
       >
-        <circle cx="10" cy="10" r="8.5" stroke={styledTheme.colors.border} strokeWidth="0.75" />
+        <rect
+          x="1%"
+          y="2%"
+          width={'98%'} // 98%
+          height={'96%'} // 96%
+          // rx="11"
+          stroke={styledTheme.colors.border}
+          strokeWidth="0.5"
+          strokeLinejoin="round"
+        />
         {
           props.selected
           &&
@@ -125,4 +133,4 @@ const OnPageConnectorNode: ComponentType<NodeProps> = (props) => {
   )
 }
 
-export default OnPageConnectorNode
+export default ProcessNode

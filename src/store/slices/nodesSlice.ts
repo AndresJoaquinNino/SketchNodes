@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { Node } from 'reactflow'
+import { generateShortUUID } from '@src/utils/functions'
 
 interface NodeState {
   nodes: Node[],
@@ -14,9 +15,23 @@ export const nodesSlice = createSlice({
   initialState,
   reducers: {
     addNode: (state, action) => {
-      const nodeId = (state.nodes.length + 1).toString()
+      const nodeIdMap: Map<string, boolean> = new Map()
+      const nodeList: Node[] = state.nodes
+      for (const node of nodeList) {
+        nodeIdMap.set(node.id, true)
+      }
+
+      const getUniqueID = (): string => {
+        const newID = generateShortUUID()
+        const nodeIdAlreadyExist = nodeIdMap.has(newID)
+        if (nodeIdAlreadyExist) {
+          return getUniqueID()
+        }
+        return newID
+      }
+
       state.nodes = state.nodes.concat({
-        id: nodeId,
+        id: getUniqueID(),
         position: { x: 100, y: 100 },
         ...action.payload
       })

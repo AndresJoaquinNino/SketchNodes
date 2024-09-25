@@ -5,22 +5,22 @@ import { NodeResizer, ResizeDragEvent, ResizeParams } from 'reactflow'
 import type { NodeProps } from 'reactflow'
 import { useTheme } from 'styled-components'
 
-import { NodeInput } from '../Nodes.styled'
-import NodeWrapper from '../NodeWrapper'
+import { NodeInput } from '../nodesStyled'
+import NodeWrapper from '../nodeWrapper'
 
-const MIN_WIDTH = 35
-const MIN_HEIGHT = 35
+const MIN_WIDTH = 120
+const MIN_HEIGHT = 60
 
-const internalBoxWidth = 55
-const internalBoxHeight = 40
+const internalBoxWidth = 80
+const internalBoxHeight = 60
 const internalBoxPositionX = (100 - internalBoxWidth) / 2
-const internalBoxPositionY = (100 - internalBoxHeight) / 4
+const internalBoxPositionY = (100 - internalBoxHeight) / 2
 
-const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
+const TerminalNode: ComponentType<NodeProps> = (props) => {
 
   const styledTheme = useTheme()
 
-  const [text, setText] = useState<string>('OffPageConnectorNode')
+  const [text, setText] = useState<string>('Terminal')
   const [nodeSize, setNodeSize] = useState({
     width: MIN_WIDTH,
     height: MIN_HEIGHT
@@ -77,16 +77,21 @@ const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
         }}
       />
       <svg
-        width="100%"
-        height="100%"
-        viewBox="0 0 28 30"
+        width={'100%'}
+        height={'100%'}
+        viewBox={`0 0 ${nodeSize.width / 3} ${nodeSize.height / 3}`}
         fill={styledTheme.colors.background}
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M1.5 2H26.5V14.5L14 27L1.5 14.5V2Z"
+        <rect
+          x="1%"
+          y="2%"
+          width={'98%'} // 98%
+          height={'96%'} // 96%
+          rx="11"
           stroke={styledTheme.colors.border}
-          strokeWidth="1"
+          strokeWidth="0.5"
+          strokeLinejoin="round"
         />
         {
           props.selected
@@ -128,4 +133,4 @@ const OffPageConnectorNode: ComponentType<NodeProps> = (props) => {
   )
 }
 
-export default OffPageConnectorNode
+export default TerminalNode
