@@ -21,7 +21,7 @@ export const nodesSlice = createSlice({
         nodeIdMap.set(node.id, true)
       }
 
-      const getUniqueID = () => {
+      const getUniqueID = (): string => {
         const newID = generateShortUUID()
         const nodeIdAlreadyExist = nodeIdMap.has(newID)
         if (nodeIdAlreadyExist) {
