@@ -96,6 +96,7 @@ function App() {
         nodesDraggable
         fitView
         onlyRenderVisibleElements
+        deleteKeyCode={'Delete'}
       >
         <Background />
         <Controls />
